@@ -1,0 +1,271 @@
+/* =========================================
+   BASE STYLES (Make sure these are at the top of your CSS file)
+========================================= */
+:root {
+    --primary-green: #4caf50;
+    --secondary-green: #7daf18;
+    --dark-green: #226804;
+    --text-color: #333;
+    --bg-light: #f9f9f9;
+    --font-body: "Lato", sans-serif;
+    --font-heading: "Tienne", serif;
+}
+
+/* =========================================
+   HERO SECTION STYLES
+========================================= */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 75vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    max-width: 750px;
+    padding: 20px;
+    /* FIX: Ensure content is not negatively positioned */
+    top: 0; 
+}
+
+/* Heading (Updated for 3rem and wrapping) */
+.hero-content h1 {
+    font-family: var(--font-heading);
+    font-size: 1rem; 
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.3em;
+    color: #fafafa;
+    white-space: normal; /* Allows text to wrap to 2 lines */
+}
+
+/* Button */
+.btn-explore {
+    background-color: #7c5a40;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.3rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    /* Position the button relative to the content flow */
+    position: static; 
+    margin-top: 1.5rem;
+    display: inline-block;
+    animation: slideIn 1s ease forwards;
+}
+
+/* Animation for the Explore button (if needed) */
+@keyframes slideIn {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* =========================================
+   SOLAR CALCULATOR SECTION STYLES
+========================================= */
+.calculator-hero-overlay {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* FIX: Use negative margin to overlap hero section, not conflicting 'bottom' */
+    margin-top: -5rem; 
+    z-index: 3;
+    bottom: auto; /* Remove conflicting bottom property */
+    padding-bottom: 4rem;
+}
+
+.calculator-card {
+    width: 85%;
+    max-width: 900px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.calculator-left {
+    flex: 2;
+    min-width: 280px;
+}
+
+.calculator-right {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 1rem;
+    background-color: var(--bg-light);
+    border-radius: 10px;
+}
+
+.calculator-left h2 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--dark-green);
+    margin-bottom: 1rem;
+}
+
+.calc-input-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+/* Style for actual inputs and select */
+.calc-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-family: var(--font-body);
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.calc-input:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.calc-btn-container {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 1rem;
+    /* NEW: Use Flexbox to align buttons side-by-side */
+    display: flex; 
+    justify-content: center;
+    gap: 1rem; /* Space between buttons */
+}
+
+.calc-btn {
+    background: linear-gradient(135deg, var(--secondary-green), var(--primary-green));
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    width: 50%; /* Adjust width to fit two buttons */
+    max-width: 180px; /* Reduced max width */
+}
+
+.calc-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* NEW: Style for the Clear Button */
+.clear-btn {
+    background-color: #f0f0f0;
+    color: var(--text-color);
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 50%; /* Adjust width to fit two buttons */
+    max-width: 180px; /* Reduced max width */
+}
+
+.clear-btn:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.02);
+}
+
+
+
+.result-item {
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+    font-weight: 500;
+    padding: 0.3rem 0;
+    border-bottom: 1px dotted #ddd;
+}
+
+.result-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.result-value {
+    font-weight: 700;
+    color: var(--dark-green);
+    float: right;
+}
+
+/* =========================================
+   RESPONSIVE FIXES
+========================================= */
+@media (max-width: 900px) {
+    .calculator-card {
+        flex-direction: column;
+    }
+    .calculator-hero-overlay {
+        margin-top: -5rem; 
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section { height: 60vh; }
+    .hero-content h1 { font-size: clamp(1.8rem, 6vw, 2.5rem); }
+    .calculator-hero-overlay { margin-top: -3rem; }
+    .calc-input-group {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 65vh;
+        background-position: center top;
+    }
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  border-top: 3px solid #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  animation: spin 0.8s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

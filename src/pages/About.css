@@ -1,0 +1,462 @@
+/* =========================================
+   GOOGLE FONTS
+========================================= */
+@import url("https://fonts.googleapis.com/css2?family=Tienne:wght@400;700&family=Lato:wght@400;700&display=swap");
+
+/* =========================================
+   BASE STYLES
+========================================= */
+:root {
+  --primary-green: #4caf50;
+  --secondary-green: #7daf18;
+  --dark-green: #226804;
+  --text-color: #333;
+  --bg-light: #f9f9f9;
+  --font-body: "Lato", sans-serif;
+  --font-heading: "Tienne", serif;
+
+  /* Fluid typography */
+  --h1-size: clamp(2rem, 4vw + 1rem, 3.2rem);
+  --h2-size: clamp(1.5rem, 2vw + 1rem, 2.2rem);
+  --p-size: clamp(0.9rem, 1vw + 0.5rem, 1.2rem);
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-color);
+  margin: 0;
+  line-height: 1;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* =========================================
+   1. HERO SECTION
+========================================= */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 700px;
+  padding: 2rem;
+}
+
+.hero-content h1 {
+  font-family: var(--font-heading);
+  font-size: var(--h1-size);
+  color: #fafafa;
+  margin-bottom: 0.4em;
+}
+
+.hero-content p {
+  font-size: var(--p-size);
+  color: #fafafa;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+.hero-subtagline {
+  font-size: 1rem;
+  color: #fff8dc;
+  margin-top: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.hero-buttons {
+  margin-top: 2rem;
+}
+
+.btn-explore {
+  background: linear-gradient(to right, var(--secondary-green), var(--dark-green));
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.8rem 2rem;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-explore:hover,
+.btn-explore:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* =========================================
+   2. MISSION, VISION, STORY SECTION
+========================================= */
+.mission-story-section {
+  padding: 60px 15px;
+  background-color: #fff;
+}
+
+.mission-story-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* LEFT SIDE – Image */
+.mission-image-wrapper {
+  flex: 0 0 45%;
+  max-width: 45%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.mission-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* RIGHT SIDE – Text */
+.mission-content {
+  flex: 1;
+  max-width: 50%; /* ADDED: This line reduces the max length of the timeline line on wide screens */
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.mission-vision-box h2 {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  margin-bottom: 1px;
+  color: #222;
+}
+
+.mission-vision-box p {
+  font-size: 0.8rem;
+  color: #555;
+  margin: 0;
+}
+
+.story-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: #222;
+  margin-bottom: 8px;
+}
+
+/* --- TIMELINE --- */
+/* --- HORIZONTAL TIMELINE --- */
+.timeline-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between; /* spreads items evenly */
+  align-items: center;
+  gap: 80px; /* adjust spacing */
+  margin-top: 30px;
+  padding: 40px 15px 20px;
+  border-top: 3px solid #644c39; /* the line */
+  overflow: visible; /* removes scroll bar */
+  width: 600px; /* full width of container */
+  flex-wrap:nowrap; /* allows items to go to next line if needed */
+}
+
+
+.timeline-item {
+  position: relative;
+  min-width: 150px;
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  /* REVISED: Sits the bottom of the dot right on the line. */
+  top: -47px; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  background-color: #644c39;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.timeline-year {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.8rem;
+  margin-top: -25px; /* below the dot */
+  color: #222;
+}
+
+.timeline-item p {
+  font-size: 0.8rem;
+  color: #555;
+  margin: 0;
+  max-width: 240px;
+  margin-inline: auto;
+}
+
+/* --- RESPONSIVE: Make timeline vertical on smaller screens --- */
+@media (max-width: 768px) {
+  .timeline-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    border-top: none;
+    border-left: 4px solid #644c39;
+    padding-left: 20px;
+    overflow-x: hidden;
+  }
+
+  .timeline-item {
+    text-align: left;
+    min-width: 100%;
+  }
+
+  .timeline-item::before {
+    top: 0;
+    /* Corrected: Centers the 16px dot on the 4px vertical border/line. */
+    left: -10px; 
+    transform: none;
+  }
+
+  .timeline-year {
+    margin-top: 0.2rem;
+  }
+}
+
+
+
+/* =========================================
+   3. CEO PROFILE SECTION
+========================================= */
+.ceo-profile-section {
+  background-color: #fafefc;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.ceo-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  max-width: 1100px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.ceo-avatar-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin-top: 80px; /* Small adjustment for icon alignment */
+
+}
+
+.ceo-avatar {
+  width: 300px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.ceo-content {
+  flex: 2;
+  color: #333;
+}
+
+.ceo-content h2 {
+  color: #2e7d32;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.ceo-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.ceo-title {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 20px;
+  font-size: 0.8rem;
+}
+
+.ceo-bio {
+  line-height: 1.7;
+  margin-bottom: 25px;
+  font-size: 1rem;
+}
+
+.ceo-message h3 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #2e7d32;
+}
+
+.ceo-message p {
+  line-height: 1.7;
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+
+}
+
+.ceo-signature {
+  font-weight: 600;
+  margin-top: 10px;
+  color: #000;
+  font-size: 1rem;
+
+}
+
+
+/* =========================================
+   4. OUR IMPACT SECTION
+========================================= */
+.our-impact-section {
+  background-color: var(--bg-light);
+  padding: 4rem 1rem 5rem;
+  text-align: center;
+}
+
+.our-impact-section h2 {
+  font-family: var(--font-heading);
+  font-size: var(--h2-size);
+  margin-bottom: 3rem;
+  color: #222;
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.impact-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.impact-icon {
+  width: 60px;
+  height: 60px;
+  background-color: #e5f2e5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.8rem;
+}
+
+.impact-item strong {
+  color: var(--primary-green);
+  font-size: 1.6rem;
+}
+
+.btn-consultation {
+  background-color: var(--primary-green);
+  color: white;
+  border-radius: 8px;
+  padding: 0.9rem 2rem;
+  font-weight: 700;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-consultation:hover,
+.btn-consultation:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(76, 175, 80, 0.5);
+}
+
+/* =========================================
+   RESPONSIVE ADJUSTMENTS
+========================================= */
+@media (max-width: 1024px) {
+  .mission-story-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .mission-image-wrapper {
+    max-width: 5%;
+    order: -1; /* Image appears above text on tablet/mobile */
+  }
+
+  .mission-content {
+    align-items: center;
+    max-width: 100%; /* IMPORTANT: Ensures full width on tablet/mobile */
+  }
+
+  .timeline-wrapper {
+    border-left: none;
+    border-top: 4px solid #644c39;
+    padding-left: 0;
+    padding-top: 20px; /* Reduced padding here */
+  }
+
+  .timeline-item::before {
+    left: 50%;
+    /* REVISED: Sits the bottom of the dot right on the line. */
+    top: -20px; 
+    transform: translateX(-80%);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .impact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ceo-card {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .impact-grid {
+    grid-template-columns: 1fr;
+  }
+}
