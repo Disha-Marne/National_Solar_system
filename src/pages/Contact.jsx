@@ -25,9 +25,22 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Phone validation (Indian format)
+    const phoneRegex = /^[6-9]\d{9}$/;
+
+    if (!phoneRegex.test(formData.phone)) {
+      alert("Please enter a valid 10 digit phone number");
+      return;
+    }
+
+    if (formData.query.length < 5) {
+      alert("Query must contain at least 5 characters");
+      return;
+    }
+
     try {
       const response = await fetch(
-        "http://localhost:5000/contact",
+        "https://national-solar-system.onrender.com/contact",
         {
           method: "POST",
           headers: {
@@ -39,20 +52,25 @@ const Contact = () => {
 
       const data = await response.json();
 
-      alert(data.message); // ✅ POPUP MESSAGE
+      if (response.ok) {
+        alert("Form submitted successfully!");
 
-      // clear form
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        consumerNumber: "",
-        query: ""
-      });
+        // Clear form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          consumerNumber: "",
+          query: ""
+        });
+
+      } else {
+        alert(data.message || "Submission failed");
+      }
 
     } catch (error) {
       console.error(error);
-      alert("Submission failed");
+      alert("Server not responding. Please try again.");
     }
   };
 
@@ -77,10 +95,10 @@ const Contact = () => {
             <div className="enquiry-form-wrapper">
               <h2 className="enquiry-title">Enquire Now</h2>
 
-              {/* ✅ FORM CONNECTED */}
               <form className="enquiry-form" onSubmit={handleSubmit}>
 
                 <div className="form-row">
+
                   <input
                     type="text"
                     name="name"
@@ -100,9 +118,11 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                   />
+
                 </div>
 
                 <div className="form-row">
+
                   <input
                     type="tel"
                     name="phone"
@@ -110,6 +130,8 @@ const Contact = () => {
                     className="form-input"
                     value={formData.phone}
                     onChange={handleChange}
+                    pattern="[6-9]{1}[0-9]{9}"
+                    maxLength="10"
                     required
                   />
 
@@ -120,11 +142,14 @@ const Contact = () => {
                     className="form-input"
                     value={formData.consumerNumber}
                     onChange={handleChange}
+                    pattern="[0-9]{6,15}"
                     required
                   />
+
                 </div>
 
                 <div className="form-row">
+
                   <textarea
                     name="query"
                     placeholder="Query"
@@ -133,15 +158,18 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                   />
+
                 </div>
 
                 <div className="form-row">
+
                   <button
                     type="submit"
                     className="btn-submit"
                   >
                     Submit
                   </button>
+
                 </div>
 
               </form>
@@ -175,6 +203,7 @@ const Contact = () => {
           </div>
 
         </div>
+
       </div>
     </section>
   );
