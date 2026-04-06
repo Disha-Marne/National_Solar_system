@@ -23,56 +23,54 @@ const Contact = () => {
 
   /* ================= SUBMIT FORM ================= */
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    // Phone validation (Indian format)
-    const phoneRegex = /^[6-9]\d{9}$/;
+  const phoneRegex = /^[6-9]\d{9}$/;
 
-    if (!phoneRegex.test(formData.phone)) {
-      alert("Please enter a valid 10 digit phone number");
-      return;
-    }
+  if (!phoneRegex.test(formData.phone)) {
+    alert("Please enter a valid 10 digit phone number");
+    return;
+  }
 
-    if (formData.query.length < 5) {
-      alert("Query must contain at least 5 characters");
-      return;
-    }
+  if (formData.query.length < 5) {
+    alert("Query must contain at least 5 characters");
+    return;
+  }
 
-    try {
-      const response = await fetch(
-        "https://national-solar-system.onrender.com/contact",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(formData)
-        }
-      );
-
-      const data = await response.json();
-
-      if (response.ok) {
-        alert("Form submitted successfully!");
-
-        // Clear form
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          consumerNumber: "",
-          query: ""
-        });
-
-      } else {
-        alert(data.message || "Submission failed");
+  try {
+    const response = await fetch(
+      "https://national-solar-system.onrender.com/contact",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
       }
+    );
 
-    } catch (error) {
-      console.error(error);
-      alert("Server not responding. Please try again.");
+    const data = await response.json();
+
+    if (response.ok) {
+      alert("Form submitted successfully!");
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        consumerNumber: "",
+        query: ""
+      });
+
+    } else {
+      alert(data.message || "Submission failed");
     }
-  };
+
+  } catch (error) {
+    console.error("Contact Error:", error);
+    alert("Server not responding. Please try again.");
+  }
+};
 
   return (
     <section className="contact-section">
