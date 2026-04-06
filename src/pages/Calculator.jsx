@@ -87,20 +87,28 @@ const Calculator = () => {
     setResults(resultData);
 
     try {
-      const response = await axios.post("http://localhost:5000/calculator", {
-        unitsUsed: u,
-        billAmount: b,
-        roofSize: r,
-        roofType,
-        ...resultData,
-      });
-      if (response.data.message) {
-        setSuccessMsg(response.data.message);
-      }
-    } catch (err) {
-      console.error(err);
-      setError("Failed to send data to the server.");
-    }
+
+  const data = {
+    unitsUsed: u,
+    billAmount: b,
+    roofSize: r,
+    roofType,
+    ...resultData
+  };
+
+  const response = await axios.post(
+  "https://national-solar-system.onrender.com/calculator",
+  data
+);
+
+  if (response.data.message) {
+    setSuccessMsg(response.data.message);
+  }
+
+} catch (err) {
+  console.error(err);
+  setError("Failed to send data to the server.");
+}
     setLoading(false); // stop spinner
   };
 
@@ -134,7 +142,7 @@ const Calculator = () => {
 
               <div className="calc-btn-container">
                 <button className="calc-btn" onClick={calculateSolar} disabled={loading}>
-                  {loading ? "Calculating..." : "Start Calculation"}
+                  {loading ? "⏳ Calculating..." : "Start Calculation"}
                 </button>
                 <button className="clear-btn" onClick={clearInputs} disabled={loading}>Clear</button>
               </div>

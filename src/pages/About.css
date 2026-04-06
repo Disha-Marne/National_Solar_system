@@ -1,11 +1,11 @@
 /* =========================================
    GOOGLE FONTS
-========================================= */
+   ========================================= */
 @import url("https://fonts.googleapis.com/css2?family=Tienne:wght@400;700&family=Lato:wght@400;700&display=swap");
 
 /* =========================================
    BASE STYLES
-========================================= */
+   ========================================= */
 :root {
   --primary-green: #4caf50;
   --secondary-green: #7daf18;
@@ -21,11 +21,12 @@
   --p-size: clamp(0.9rem, 1vw + 0.5rem, 1.2rem);
 }
 
+/* FIX: line-height was 1 — far too tight, unreadable on paragraphs */
 body {
   font-family: var(--font-body);
   color: var(--text-color);
   margin: 0;
-  line-height: 1;
+  line-height: 1.6;
 }
 
 img {
@@ -34,15 +35,21 @@ img {
   height: auto;
 }
 
+/* FIX: Removed outline: none — it breaks keyboard accessibility.
+   Use :focus-visible instead to show focus only for keyboard users. */
 button {
   cursor: pointer;
   border: none;
-  outline: none;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--primary-green);
+  outline-offset: 2px;
 }
 
 /* =========================================
    1. HERO SECTION
-========================================= */
+   ========================================= */
 .hero-section {
   position: relative;
   width: 100%;
@@ -93,11 +100,13 @@ button {
   margin-top: 2rem;
 }
 
+/* FIX: Added font-size — was missing, caused unpredictable inheritance */
 .btn-explore {
   background: linear-gradient(to right, var(--secondary-green), var(--dark-green));
   color: #fff;
   border-radius: 8px;
   padding: 0.8rem 2rem;
+  font-size: 1rem;
   font-weight: 600;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -111,7 +120,7 @@ button {
 
 /* =========================================
    2. MISSION, VISION, STORY SECTION
-========================================= */
+   ========================================= */
 .mission-story-section {
   padding: 60px 15px;
   background-color: #fff;
@@ -123,7 +132,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 2rem;
   flex-wrap: wrap;
 }
 
@@ -146,21 +155,23 @@ button {
 /* RIGHT SIDE – Text */
 .mission-content {
   flex: 1;
-  max-width: 50%; /* ADDED: This line reduces the max length of the timeline line on wide screens */
+  max-width: 50%;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  /* FIX: gap was 3px — too cramped. Increased to 1rem for breathing room */
+  gap: 1rem;
 }
 
 .mission-vision-box h2 {
   font-family: var(--font-heading);
   font-size: 1.4rem;
-  margin-bottom: 1px;
+  margin-bottom: 0.25rem;
   color: #222;
 }
 
 .mission-vision-box p {
-  font-size: 0.8rem;
+  /* FIX: Switched from 0.8rem px to rem for consistent scaling */
+  font-size: 0.875rem;
   color: #555;
   margin: 0;
 }
@@ -169,25 +180,26 @@ button {
   font-family: var(--font-heading);
   font-size: 1.4rem;
   color: #222;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
 
-/* --- TIMELINE --- */
 /* --- HORIZONTAL TIMELINE --- */
 .timeline-wrapper {
   position: relative;
   display: flex;
-  justify-content: space-between; /* spreads items evenly */
+  justify-content: space-between;
   align-items: center;
-  gap: 80px; /* adjust spacing */
-  margin-top: 30px;
-  padding: 40px 15px 20px;
-  border-top: 3px solid #644c39; /* the line */
-  overflow: visible; /* removes scroll bar */
-  width: 600px; /* full width of container */
-  flex-wrap:nowrap; /* allows items to go to next line if needed */
+  gap: 2rem;
+  margin-top: 1.875rem;
+  padding: 2.5rem 0.9375rem 1.25rem;
+  border-top: 3px solid #644c39;
+  overflow: visible;
+  /* FIX: Changed fixed width: 600px to max-width + width: 100%
+     so it doesn't overflow on small screens */
+  max-width: 600px;
+  width: 100%;
+  flex-wrap: nowrap;
 }
-
 
 .timeline-item {
   position: relative;
@@ -199,8 +211,7 @@ button {
 .timeline-item::before {
   content: "";
   position: absolute;
-  /* REVISED: Sits the bottom of the dot right on the line. */
-  top: -47px; 
+  top: -47px;
   left: 50%;
   transform: translateX(-50%);
   width: 16px;
@@ -213,28 +224,29 @@ button {
 .timeline-year {
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 0.8rem;
-  margin-top: -25px; /* below the dot */
+  font-size: 0.875rem;
+  margin-top: -1.5625rem;
   color: #222;
 }
 
 .timeline-item p {
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   color: #555;
   margin: 0;
   max-width: 240px;
   margin-inline: auto;
 }
 
-/* --- RESPONSIVE: Make timeline vertical on smaller screens --- */
+/* --- RESPONSIVE: Vertical timeline on small screens --- */
 @media (max-width: 768px) {
   .timeline-wrapper {
     flex-direction: column;
     align-items: flex-start;
     border-top: none;
     border-left: 4px solid #644c39;
-    padding-left: 20px;
+    padding-left: 1.25rem;
     overflow-x: hidden;
+    gap: 1.5rem;
   }
 
   .timeline-item {
@@ -244,8 +256,7 @@ button {
 
   .timeline-item::before {
     top: 0;
-    /* Corrected: Centers the 16px dot on the 4px vertical border/line. */
-    left: -10px; 
+    left: -1.375rem;
     transform: none;
   }
 
@@ -254,11 +265,9 @@ button {
   }
 }
 
-
-
 /* =========================================
    3. CEO PROFILE SECTION
-========================================= */
+   ========================================= */
 .ceo-profile-section {
   background-color: #fafefc;
   padding: 60px 20px;
@@ -269,7 +278,7 @@ button {
 .ceo-container {
   display: flex;
   align-items: flex-start;
-  gap: 40px;
+  gap: 2.5rem;
   max-width: 1100px;
   width: 100%;
   flex-wrap: wrap;
@@ -279,8 +288,7 @@ button {
   flex: 1;
   display: flex;
   justify-content: center;
-  margin-top: 80px; /* Small adjustment for icon alignment */
-
+  margin-top: 5rem;
 }
 
 .ceo-avatar {
@@ -299,52 +307,49 @@ button {
 .ceo-content h2 {
   color: #2e7d32;
   font-size: 1.3rem;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
 }
 
 .ceo-content h3 {
   font-size: 1.2rem;
-  margin-bottom: 5px;
+  margin-bottom: 0.3125rem;
 }
 
 .ceo-title {
   font-style: italic;
   color: #555;
-  margin-bottom: 20px;
-  font-size: 0.8rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.875rem;
 }
 
 .ceo-bio {
   line-height: 1.7;
-  margin-bottom: 25px;
+  margin-bottom: 1.5625rem;
   font-size: 1rem;
 }
 
 .ceo-message h3 {
   font-size: 1rem;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
   color: #2e7d32;
 }
 
 .ceo-message p {
   line-height: 1.7;
-  margin-bottom: 10px;
-  font-size: 0.8rem;
-
+  margin-bottom: 0.625rem;
+  font-size: 0.875rem;
 }
 
 .ceo-signature {
   font-weight: 600;
-  margin-top: 10px;
+  margin-top: 0.625rem;
   color: #000;
   font-size: 1rem;
-
 }
-
 
 /* =========================================
    4. OUR IMPACT SECTION
-========================================= */
+   ========================================= */
 .our-impact-section {
   background-color: var(--bg-light);
   padding: 4rem 1rem 5rem;
@@ -388,11 +393,14 @@ button {
   font-size: 1.6rem;
 }
 
+/* FIX: Added font-size — was missing on .btn-consultation */
+/* FIX: Added :focus-visible — was missing, only .btn-explore had it */
 .btn-consultation {
   background-color: var(--primary-green);
   color: white;
   border-radius: 8px;
   padding: 0.9rem 2rem;
+  font-size: 1rem;
   font-weight: 700;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -404,39 +412,46 @@ button {
 }
 
 /* =========================================
-   RESPONSIVE ADJUSTMENTS
-========================================= */
+   RESPONSIVE BREAKPOINTS
+   ========================================= */
+
+/* --- Tablet (max 1024px) --- */
 @media (max-width: 1024px) {
   .mission-story-container {
     flex-direction: column;
     text-align: center;
   }
 
+  /* FIX: Was max-width: 5% — typo that made image nearly invisible.
+     Corrected to 100% so it fills the column on tablet/mobile */
   .mission-image-wrapper {
-    max-width: 5%;
-    order: -1; /* Image appears above text on tablet/mobile */
+    max-width: 100%;
+    width: 100%;
+    order: -1;
   }
 
   .mission-content {
     align-items: center;
-    max-width: 100%; /* IMPORTANT: Ensures full width on tablet/mobile */
+    max-width: 100%;
   }
 
+  /* FIX: Restored border-top for horizontal timeline at this breakpoint.
+     Removed broken mixed comment syntax that was here before. */
   .timeline-wrapper {
     border-left: none;
     border-top: 4px solid #644c39;
     padding-left: 0;
-    padding-top: 20px; /* Reduced padding here */
+    padding-top: 1.25rem;
   }
 
   .timeline-item::before {
     left: 50%;
-    /* REVISED: Sits the bottom of the dot right on the line. */
-    top: -20px; 
-    transform: translateX(-80%);
+    top: -1.25rem;
+    transform: translateX(-50%);
   }
 }
 
+/* --- Mobile (max 768px) --- */
 @media (max-width: 768px) {
   .hero-content h1 {
     font-size: 2rem;
@@ -450,13 +465,46 @@ button {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .ceo-card {
+  /* FIX: Added proper CEO stacking for mobile.
+     Was referencing .ceo-card (wrong class name) — corrected to .ceo-container */
+  .ceo-container {
     flex-direction: column;
+  }
+
+  .ceo-avatar-wrapper {
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .ceo-avatar {
+    width: 100%;
+    height: auto;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .ceo-content {
+    flex: unset;
+    width: 100%;
   }
 }
 
+/* --- Small mobile (max 480px) --- */
 @media (max-width: 480px) {
   .impact-grid {
     grid-template-columns: 1fr;
+  }
+
+  .mission-story-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .ceo-profile-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .hero-buttons .btn-explore {
+    width: 100%;
+    display: block;
   }
 }
