@@ -1,0 +1,18 @@
+/* ================================
+   GLOBAL RESPONSIVE BREAKPOINTS
+================================ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+   /* shared responsive rules */
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+   /* shared responsive rules */
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+   /* shared responsive rules */
+}

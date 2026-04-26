@@ -1,0 +1,153 @@
+/* Make sure this file has access to your root variables
+  (like --font-heading, --dark-green, --bg-light, etc.)
+  by importing your main CSS file or defining them here.
+*/
+
+.subsidy-section {
+    padding: 4rem 2rem;
+    background-color: var(--bg-light, #f9f9f9);
+    font-family: var(--font-body, "Lato", sans-serif);
+}
+
+.subsidy-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.subsidy-main-title {
+    font-family: var(--font-heading, "Tienne", serif);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    text-align: center;
+    color: var(--dark-green, #226804);
+    margin-bottom: 0.5rem;
+}
+
+.subsidy-subtitle {
+    font-family: var(--font-heading, "Tienne", serif);
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    text-align: center;
+    color: var(--text-color, #333);
+    margin-bottom: 2.5rem;
+}
+
+/* Subsidy Cards Grid */
+.subsidy-cards-grid {
+    display: grid;
+    /* Creates responsive columns: 3 on large, 1 on small */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.subsidy-card {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+    border: 1px solid #eee;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.subsidy-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.subsidy-amount {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-green, #4caf50);
+    margin: 0 0 0.5rem 0;
+}
+
+.subsidy-description {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* GHS/RWA Card */
+.subsidy-ghs-card {
+    background-color: var(--bg-light, #f9f9f9);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    border: 1px solid #e0e0e0;
+}
+
+.subsidy-ghs-card h4 {
+    font-family: var(--font-heading, "Tienne", serif);
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.subsidy-ghs-card p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+    color: #444;
+}
+
+.subsidy-amount-ghs {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-green, #4caf50);
+    margin-top: 1rem;
+}
+
+/* Consumption Table */
+.subsidy-table-wrapper {
+    width: 100%;
+    /* This allows the table to scroll horizontally on small screens */
+    overflow-x: auto; 
+    border-radius: 10px;
+    border: 1px solid #d8f3d8;
+}
+
+.subsidy-table {
+    width: 100%;
+    /* Ensures table layout is maintained even if screen is narrow */
+    min-width: 650px; 
+    border-collapse: collapse;
+}
+
+.subsidy-table td {
+    padding: 1.2rem;
+    text-align: center;
+    font-size: 1rem;
+    border-bottom: 1px solid #d8f3d8;
+}
+
+.subsidy-table tr:last-child td {
+    border-bottom: none; /* Remove border from last row */
+}
+
+.subsidy-table td:not(:last-child) {
+    border-right: 1px solid #d8f3d8;
+}
+
+.table-label {
+    text-align: left;
+    font-weight: 700;
+    width: 40%; /* Give label column more width */
+}
+
+/* This targets the first <tr> and gives it the green background */
+.table-row-green td {
+    background-color: #f0fdf0; /* Light green background */
+}
+
+.subsidy-table tr:not(.table-row-green) td {
+    background-color: #fff;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 65vh;
+        background-position: center top;
+    }
+}

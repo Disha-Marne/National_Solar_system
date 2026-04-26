@@ -1,0 +1,12 @@
+# Solar Forms to Google Sheets Fix
+- [x] Create TODO.md ✅
+- [x] Step 1: Fix backend/server.js (4 critical bugs) ✅
+  - Load contactCreds
+  - Fix validation (!query)
+  - Fix contact auth (use contactCreds)
+  - Fix addRow object format
+- [x] Step 2: Backend deps installed ✅
+- [ ] Step 3: Restart server with JWT fix: cd backend && node server.js
+- [ ] Step 4: Test contact form submission
+- [ ] Step 5: Test calculator form submission
+- [ ] Step 6: Verify data in Google Sheets

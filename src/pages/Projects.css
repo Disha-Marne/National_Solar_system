@@ -1,0 +1,135 @@
+/* Ensure your root variables are accessible, or define them here */
+/* For example:
+:root {
+  --font-heading: "Tienne", serif;
+  --font-body: "Lato", sans-serif;
+  --text-color: #333;
+  --dark-green: #226804;
+  --primary-green: #4caf50;
+}
+*/
+
+.projects-section {
+    padding: 4rem 2rem;
+    background-color: #fcf8f3; /* Light cream background from image */
+    font-family: var(--font-body, "Lato", sans-serif);
+    color: var(--text-color, #333);
+}
+
+.projects-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.projects-main-title {
+    font-family: var(--font-heading, "Tienne", serif);
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    text-align: center;
+    color: var(--dark-green, #226804);
+    margin-bottom: 0.5rem;
+}
+
+.projects-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    text-align: center;
+    color: #555;
+    margin-bottom: 3rem;
+}
+
+.project-item {
+    display: flex;
+    flex-direction: row; /* Default for larger screens */
+    align-items: center; /* Vertically centers the image and content */
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2.5rem; /* Slightly less margin than Services */
+    overflow: hidden; 
+}
+
+.project-image-wrapper {
+    flex-shrink: 0; 
+    width: 280px; /* Fixed width for the image container */
+    height: 200px; /* Adjusted height for these images */
+    margin-right: 2rem; 
+    border-radius: 15px 0 0 15px; /* Rounded left corners */
+    overflow: hidden; 
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+
+.project-content {
+    padding: 1.5rem 2rem 1.5rem 0; 
+    flex-grow: 1; 
+}
+
+.project-type-title {
+    font-family: var(--font-heading, "Tienne", serif);
+    font-size: clamp(1.1rem, 2.7vw, 1.5rem); /* Slightly smaller than Services titles */
+    color: var(--dark-green, #226804); /* Using dark-green for titles here */
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+}
+
+.project-description {
+    line-height: 1.6;
+    margin: 0; /* Remove default paragraph margin */
+    color: #444;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .project-item {
+        flex-direction: column; /* Stack image and content vertically */
+        align-items: center; 
+        text-align: center; 
+    }
+
+    .project-image-wrapper {
+        width: 100%; /* Image takes full width */
+        height: 180px; /* Adjust height for mobile */
+        margin-right: 0; 
+        margin-bottom: 1.5rem; 
+        border-radius: 15px 15px 0 0; /* Rounded top corners */
+    }
+
+    .project-image {
+        border-radius: 15px 15px 0 0; /* Ensure image corners match wrapper */
+    }
+
+    .project-content {
+        padding: 0 1.5rem 1.5rem 1.5rem; /* Adjust padding for centered text */
+    }
+}
+
+/* Add this to your existing Projects.css file */
+
+.project-type-title.clickable {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.project-type-title.clickable:hover {
+    color: var(--primary-green, #4caf50); /* Changes color on hover */
+}
+
+@media (max-width: 480px) {
+    .projects-section {
+        padding: 2.5rem 1rem;
+    }
+    .project-item {
+        margin-bottom: 2rem;
+    }
+    .project-image-wrapper {
+        height: 150px;
+    }
+    .project-type-title {
+        font-size: 1.2rem;
+    }
+}

@@ -1,0 +1,129 @@
+:root {
+  --font-heading: "Tienne", serif;
+  --font-body: "Lato", sans-serif;
+  --text-color: #333;
+  --dark-green: #226804;
+  --primary-green: #4caf50;
+}
+
+.residential-details-section {
+    padding: 4rem 2rem;
+    background-color: #fcf8f3; /* Light cream background from image */
+    font-family: var(--font-body, "Lato", sans-serif);
+    color: var(--text-color, #333);
+}
+
+.residential-details-container {
+    max-width: 1200px; /* Wider container to accommodate two cards */
+    margin: 0 auto;
+}
+
+.residential-details-title {
+    font-family: var(--font-heading, "Tienne", serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    text-align: center;
+    color: var(--dark-green, #226804);
+    margin-bottom: 0.5rem;
+}
+
+.residential-details-subtitle {
+    font-size: clamp(1rem, 2.2vw, 1.25rem);
+    text-align: center;
+    color: #555;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.project-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns for desktop */
+    gap: 2.5rem; /* Space between the cards */
+}
+
+/* This is your existing hover effect, but targeted at the correct class */
+/* It applies when the mouse is just SITTING on the card */
+.project-card-details:hover {
+  transform: scale(1.03);
+  /* You can also add a subtle shadow */
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition */
+}
+
+/* This is the NEW rule for when the card is BEING CLICKED */
+/* It applies only while the mouse button is HELD DOWN */
+.project-card-details:active {
+  transform: scale(1.01); /* Scale down slightly from the hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Revert to original shadow */
+}
+
+.details-image-wrapper {
+    width: 100%;
+    height: 250px; /* Fixed height for the images */
+    overflow: hidden;
+    border-radius: 15px 15px 0 0; /* Rounded top corners for the image wrapper */
+}
+
+.details-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    display: block;
+}
+
+.details-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem; /* Space between image and table */
+    font-size: 1.05rem;
+}
+
+.details-table td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid #d8f3d8; /* Light green border */
+}
+
+.details-table tr:last-child td {
+    border-bottom: none; /* Remove border from the last row */
+}
+
+.details-table tr td:first-child {
+    font-weight: 700;
+    color: var(--dark-green, #226804);
+    width: 45%; /* Give the label column more width */
+}
+
+/* Green background for alternate rows */
+.details-table .table-row-green td {
+    background-color: #f0fdf0; /* Light green background */
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .project-details-grid {
+        grid-template-columns: 1fr; /* Stack cards on smaller screens */
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .residential-details-section {
+        padding: 2.5rem 1rem;
+    }
+    .residential-details-title {
+        font-size: 1.8rem;
+    }
+    .residential-details-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+    }
+    .details-image-wrapper {
+        height: 200px; /* Smaller image height for mobile */
+    }
+    .details-table td {
+        padding: 0.8rem 1rem;
+        font-size: 0.95rem;
+    }
+}

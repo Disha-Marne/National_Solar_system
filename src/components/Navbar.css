@@ -1,0 +1,291 @@
+/* =========================================
+   GOOGLE FONTS
+   ========================================= */
+@import url("https://fonts.googleapis.com/css2?family=Tienne:wght@400;700&family=Lato:wght@400;700&display=swap");
+
+/* =========================================
+   DESIGN TOKENS
+   ========================================= */
+:root {
+  --nav-height:       68px;
+  --nav-bg:           rgba(255, 255, 255, 0.0);
+  --nav-bg-scrolled:  rgba(255, 255, 255, 0.97);
+  --nav-shadow:       0 2px 20px rgba(0, 0, 0, 0.08);
+  --nav-border:       rgba(0, 0, 0, 0.06);
+
+  --link-color:       #3a3a32;
+  --link-hover-bg:    #f2f7ea;
+  --link-active:      #3b6d11;
+  --link-font:        "Lato", sans-serif;
+
+  --green-400:        #4caf50;
+  --green-500:        #3d9e41;
+  --green-700:        #226804;
+  --accent:           #7daf18;
+
+  --radius-pill:      50px;
+  --radius-sm:        8px;
+  --transition:       0.25s ease;
+
+  --mobile-menu-width: 260px;
+}
+
+/* =========================================
+   NAVBAR BASE
+   ========================================= */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  padding: 0 1.5rem;
+  height: var(--nav-height);
+
+  background: var(--nav-bg);
+  /* Smooth bg transition when scrolled */
+  transition: background var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+/* Scrolled state — white background appears */
+.navbar--scrolled {
+  background: var(--nav-bg-scrolled);
+  box-shadow: var(--nav-shadow);
+  border-bottom: 1px solid var(--nav-border);
+}
+
+/* =========================================
+   LOGO
+   ========================================= */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.navbar__logo img {
+  width: 170px;
+  height: 58px;
+  object-fit: cover;
+  display: block;
+  /* Smooth logo entrance */
+  transition: opacity var(--transition);
+}
+
+.navbar__logo:hover img { opacity: 0.88; }
+
+/* =========================================
+   NAV LINKS (desktop)
+   ========================================= */
+.navbar__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.navbar__link {
+  display: block;
+  padding: 0.5rem 0.9rem;
+  text-decoration: none;
+  color: var(--link-color);
+  font-size: 0.9375rem;
+  font-family: var(--link-font);
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+.navbar__link:hover {
+  background: var(--link-hover-bg);
+  color: var(--link-active);
+  transform: translateY(-1px);
+}
+
+/* Active route highlight */
+.navbar__link--active {
+  color: var(--link-active);
+  font-weight: 700;
+  background: var(--link-hover-bg);
+}
+
+/* Keyboard focus ring — accessible, not obtrusive */
+.navbar__link:focus-visible,
+.navbar__cta:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* =========================================
+   CONTACT CTA BUTTON
+   ========================================= */
+.navbar__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.55rem 1.4rem;
+  margin-left: 0.75rem;
+
+  background: linear-gradient(to right, var(--accent), var(--green-700));
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--link-font);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  white-space: nowrap;
+
+  border-radius: var(--radius-pill);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 3px 12px rgba(125, 175, 24, 0.35);
+}
+
+.navbar__cta:hover {
+  background: linear-gradient(to right, #6b9a15, #1c5203);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(125, 175, 24, 0.45);
+}
+
+/* =========================================
+   HAMBURGER TOGGLE (mobile)
+   ========================================= */
+.navbar__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  width: 40px;
+  height: 40px;
+  padding: 0;
+
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition);
+}
+
+.navbar__toggle:hover { background: var(--link-hover-bg); }
+
+.navbar__toggle-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--link-color);
+  border-radius: 2px;
+  transform-origin: center;
+  transition: transform var(--transition), opacity var(--transition), width var(--transition);
+}
+
+/* Animate bars → X when open */
+.navbar__toggle--open .navbar__toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar__toggle--open .navbar__toggle-bar:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+.navbar__toggle--open .navbar__toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =========================================
+   MOBILE BACKDROP
+   ========================================= */
+.navbar__backdrop {
+  display: none;
+}
+
+/* =========================================
+   RESPONSIVE — Tablet & Mobile
+   ========================================= */
+@media (max-width: 900px) {
+  /* Show hamburger */
+  .navbar__toggle { display: flex; }
+
+  /* Mobile dropdown panel */
+  .navbar__links {
+    position: absolute;
+    top: var(--nav-height);
+    right: 1rem;
+
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+
+    width: var(--mobile-menu-width);
+    padding: 0.75rem;
+
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.14);
+    border: 1px solid var(--nav-border);
+
+    /* Hidden state */
+    opacity: 0;
+    transform: translateY(-10px) scale(0.97);
+    pointer-events: none;
+    visibility: hidden;
+
+    transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+  }
+
+  .navbar__links--open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  .navbar__link {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .navbar__cta {
+    width: 100%;
+    margin: 0.4rem 0 0.25rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    justify-content: center;
+  }
+
+  /* Full-screen backdrop when menu is open */
+  .navbar__backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    z-index: -1;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+  .navbar {
+    padding: 0 1rem;
+  }
+
+  .navbar__logo img {
+    width: 140px;
+    height: 48px;
+  }
+
+  .navbar__links {
+    right: 0.5rem;
+    width: calc(100vw - 1rem);
+  }
+}

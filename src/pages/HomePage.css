@@ -1,0 +1,393 @@
+@import url("https://fonts.googleapis.com/css2?family=Tienne:wght@400;700&family=Lato:wght@400;700&display=swap");
+
+/*
+|--------------------------------------------------------------------------
+| HomePage Styles (src/pages/HomePage.css)
+|--------------------------------------------------------------------------
+| Styles for the Hero, Who We Are, Why Solar, and Testimonials sections.
+|--------------------------------------------------------------------------
+*/
+
+/* ---------- Base Styles ---------- */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Lato", sans-serif;
+  background-color: #fff;
+  scroll-behavior: smooth; 
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* ---------- Hero Section ---------- */
+
+.hero-section {
+  position: relative; 
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.2) 60%,
+    rgba(0, 0, 0, 0.6) 100%
+  );*/ 
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative; 
+  z-index: 5;
+  max-width: 700px; 
+  text-align: center; 
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-content h1 {
+  font-family: "Tienne", serif;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.3em;
+  color: #fafafa;
+  white-space: nowrap;
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  color: #fafafa;
+  margin: 0;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+.hero-subtagline {
+  font-size: 1rem;
+  color: #fff8dc;
+  margin-top: 8px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* FIX: Rely on flexbox for proper centering and spacing. */
+.hero-buttons {
+  position: relative; 
+  margin-top: 25px; 
+  z-index: 6; 
+}
+
+.btn-explore {
+  /* IMPROVEMENT: Use 'background' shorthand property for robustness */
+  background: linear-gradient(to right, #7DAF18, #226804);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-weight: 600;
+  cursor: pointer;
+  /* Add box shadow to help the button pop */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+  transition: all 0.3s ease;
+}
+
+.btn-explore:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
+}
+
+/* Responsive for Hero */
+@media (max-width: 1024px) {
+  .hero-content {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.4rem; 
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
+  }
+
+  .hero-subtagline {
+    font-size: 1rem;
+  }
+}
+
+
+/* ---------- Who We Are ---------- */
+.who-we-are-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 15px;
+  gap: 40px;
+  flex-wrap: wrap;
+  background: linear-gradient(180deg, #fff, #fafafa);
+}
+
+.who-we-are-image img {
+  width: 500px; 
+  height: 400px; 
+  object-fit: cover; 
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.who-we-are-image img:hover {
+  transform: scale(1.03);
+}
+
+.who-we-are-content {
+  flex: 1;
+  padding-left: 20px;
+}
+
+.who-we-are-content h2 {
+  font-family: "Tienne", serif;
+  font-size: 1.8rem;
+  color: #222;
+}
+
+.who-we-are-content p {
+  font-family: "Lato", sans-serif;
+  color: #444;
+  margin: 20px 0;
+  line-height: 1.6;
+  font-size: 0.95rem; 
+}
+
+.btn-learn {
+  /* IMPROVEMENT: Use 'background' shorthand for consistency */
+  background: linear-gradient(to right, #7DAF18, #226804);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Added shadow for depth */
+  transition: all 0.3s ease;
+}
+
+.btn-learn:hover {
+  opacity: 0.9;
+  transform: translateY(-3px);
+}
+
+/* Responsive for Who We Are */
+@media (max-width: 768px) {
+  .who-we-are-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .who-we-are-content {
+    padding-left: 0;
+  }
+
+  .who-we-are-image img {
+    max-width: 90%;
+    height: auto;
+  }
+}
+
+/* ---------- Why Solar ---------- */
+.why-solar-section {
+  text-align: center;
+  /* IMPROVEMENT: Use a softer, less neutral background */
+  background-color: #F0EFE7; 
+  padding: 90px 15px;
+}
+
+.why-solar-section h2 {
+  font-family: "Tienne", serif; /* Consistency */
+  font-size: 2.2rem;
+  color: #222;
+}
+
+.why-solar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.feature-item {
+  background: #fff;
+  border-radius: 10px;
+  padding: 35px 25px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;           /* NEW */
+  flex-direction: column;  /* stack children vertically */
+  align-items: center;     /* center horizontally */
+  justify-content: center; /* optional: center vertically if box height allows */
+  text-align: center; 
+}
+
+.feature-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.feature-item h3 {
+  font-family: "Tienne", serif; /* Consistency */
+  color: #4caf50;
+  margin-bottom: 10px;
+}
+
+/* ---------- Testimonials ---------- */
+.testimonials-section {
+  text-align: center;
+  padding: 90px 15px;
+  background: #fff;
+}
+
+.testimonial-slider-wrapper {
+  max-width: 700px;
+  margin: 40px auto 0;
+  overflow: hidden;
+  min-height: 180px;
+  position: relative; 
+  border-radius: 12px;
+  background: #f9f9f9;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.testimonial-slider {
+  display: flex;
+  transition: transform 0.8s ease-in-out;
+}
+
+.testimonial-slide {
+  min-width: 100%;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.testimonial-quote {
+  font-family: "Lato", sans-serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #333;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.testimonial-author {
+  font-family: "Tienne", serif; /* Consistency */
+  color: #222;
+  font-weight: 600;
+}
+
+/* Slider dots */
+.slider-dots {
+  text-align: center;
+  padding: 15px 0 25px;
+}
+
+.dot {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dot.active {
+  background-color: #4caf50;
+  transform: scale(1.2);
+}
+
+/* --- Slider Navigation Buttons --- */
+
+.slider-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 1.5rem;
+  font-weight: bold;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+  line-height: 1;
+}
+
+.slider-nav-btn:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.slider-nav-btn.prev {
+  left: 0;
+  border-radius: 0 12px 12px 0;
+}
+
+.slider-nav-btn.next {
+  right: 0;
+  border-radius: 12px 0 0 12px;
+}
+
+/* Responsive for Testimonials */
+@media (max-width: 500px) {
+  .testimonial-slide {
+    padding: 30px 10px;
+  }
+  .testimonial-quote {
+    font-size: 1rem;
+  }
+  .slider-nav-btn {
+    padding: 8px 10px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 65vh;
+        background-position: center top;
+    }
+}

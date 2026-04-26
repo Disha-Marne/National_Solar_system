@@ -1,0 +1,273 @@
+:root {
+  --font-heading: "Tienne", serif;
+  --font-body: "Lato", sans-serif;
+  --text-color: #333;
+  --dark-green: #226804;
+  --primary-green: #4caf50;
+  --secondary-green: #7daf18;
+  --bg-light-green: #f2fdf2;
+}
+
+.contact-section {
+    padding: 2rem 0rem;
+    background-color: #fefdfb; /* Light cream background */
+    font-family: var(--font-body, "Lato", sans-serif);
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Header Titles --- */
+.contact-header {
+    max-width: 500px;
+    margin-bottom: 3rem;
+}
+
+.contact-main-title {
+    font-family: var(--font-heading, "Tienne", serif);
+    font-size: 3.5rem;
+    color: var(--text-color, #333);
+    line-height: 1.2;
+    margin: 0 0 1rem 0;
+}
+
+.contact-subtitle {
+    font-size: 1.25rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* --- Main Grid Layout --- */
+.contact-content-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr; /* 1.2fr for left, 1fr for right */
+    gap: 3rem;
+}
+
+.contact-left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* --- Enquiry Form --- */
+.enquiry-form-wrapper {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.enquiry-title {
+    font-family: var(--font-heading, "Tienne", serif);
+    font-size: 2rem;
+    color: var(--dark-green, #226804);
+    margin: 0 0 2rem 0;
+}
+
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-input,
+.query-box {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    font-family: var(--font-body, "Lato", sans-serif);
+    font-size: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: var(--bg-light-green, #f2fdf2); /* Light green background */
+    box-sizing: border-box; /* Important for padding to work well */
+}
+
+.form-input::placeholder,
+.query-box::placeholder {
+    color: #777;
+    font-weight: 500;
+}
+
+.query-box {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, var(--secondary-green, #7daf18), var(--primary-green, #4caf50));
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.9rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    margin: 0 auto; /* Center the button */
+}
+
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* --- FAQ Section --- */
+.faq-title {
+    font-family: var(--font-heading, "Tienne", serif);
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.faq-item {
+    margin-bottom: 1rem;
+}
+.faq-question {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #444;
+    margin: 0;
+}
+.faq-answer {
+    font-size: 1rem;
+    color: #555;
+    margin: 0.5rem 0 0 0;
+}
+
+/* --- Right Column --- */
+.contact-info-wrapper {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    top: -350px;
+    
+}
+
+.contact-image-wrapper {
+    width: 100%;
+    height: 450px; /* Adjust as needed */
+    top: -400px;
+}
+
+.contact-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    top: -500px;
+}
+
+.contact-info-box {
+    background: #fff;
+    padding: 2.5rem;
+    /* Position it over the image */
+    position: relative;
+    margin-top: 175px; /* Pulls the box up over the image */
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.1);
+    top: -300px;
+}
+
+.contact-info-title {
+    font-family: var(--font-heading, "Tienne", serif);
+    font-size: 2rem;
+    color: var(--dark-green, #226804);
+    text-align: center;
+    margin: 0 0 2rem 0;
+}
+
+.contact-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-info-list li {
+    display: flex;
+    align-items: flex-start; /* Aligns icon with first line of text */
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: #333;
+}
+
+.contact-info-list li span {
+    font-size: 1.2rem;
+    color: var(--dark-green, #226804);
+    margin-top: 2px; /* Small adjustment for icon alignment */
+}
+
+.contact-info-list li p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .contact-content-grid {
+        grid-template-columns: 1fr; /* Stack columns on tablets */
+    }
+
+    .contact-right-column {
+        /* Puts the image/info box first on tablet */
+        order: -1; 
+    }
+
+    .contact-info-box {
+        width: 90%;
+        margin-top: -80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-header {
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .form-row {
+        flex-direction: column;
+        margin-bottom: 0;
+        gap: 1.5rem;
+    }
+
+    /* Add margin back to individual inputs */
+    .form-row .form-input {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-row:has(.btn-submit) {
+        margin-bottom: 0;
+    }
+
+    .btn-submit {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .contact-section {
+        padding: 2.5rem 1rem;
+    }
+
+    .enquiry-form-wrapper {
+        padding: 1.5rem;
+    }
+
+    .contact-info-box {
+        padding: 1.5rem;
+        margin-top: -60px;
+    }
+
+    .contact-image-wrapper {
+        height: 250px;
+    }
+}

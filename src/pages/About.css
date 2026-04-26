@@ -1,0 +1,510 @@
+/* =========================================
+   GOOGLE FONTS
+   ========================================= */
+@import url("https://fonts.googleapis.com/css2?family=Tienne:wght@400;700&family=Lato:wght@400;700&display=swap");
+
+/* =========================================
+   BASE STYLES
+   ========================================= */
+:root {
+  --primary-green: #4caf50;
+  --secondary-green: #7daf18;
+  --dark-green: #226804;
+  --text-color: #333;
+  --bg-light: #f9f9f9;
+  --font-body: "Lato", sans-serif;
+  --font-heading: "Tienne", serif;
+
+  /* Fluid typography */
+  --h1-size: clamp(2rem, 4vw + 1rem, 3.2rem);
+  --h2-size: clamp(1.5rem, 2vw + 1rem, 2.2rem);
+  --p-size: clamp(0.9rem, 1vw + 0.5rem, 1.2rem);
+}
+
+/* FIX: line-height was 1 — far too tight, unreadable on paragraphs */
+body {
+  font-family: var(--font-body);
+  color: var(--text-color);
+  margin: 0;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+/* FIX: Removed outline: none — it breaks keyboard accessibility.
+   Use :focus-visible instead to show focus only for keyboard users. */
+button {
+  cursor: pointer;
+  border: none;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--primary-green);
+  outline-offset: 2px;
+}
+
+/* =========================================
+   1. HERO SECTION
+   ========================================= */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 700px;
+  padding: 2rem;
+}
+
+.hero-content h1 {
+  font-family: var(--font-heading);
+  font-size: var(--h1-size);
+  color: #fafafa;
+  margin-bottom: 0.4em;
+}
+
+.hero-content p {
+  font-size: var(--p-size);
+  color: #fafafa;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+.hero-subtagline {
+  font-size: 1rem;
+  color: #fff8dc;
+  margin-top: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.hero-buttons {
+  margin-top: 2rem;
+}
+
+/* FIX: Added font-size — was missing, caused unpredictable inheritance */
+.btn-explore {
+  background: linear-gradient(to right, var(--secondary-green), var(--dark-green));
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-explore:hover,
+.btn-explore:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* =========================================
+   2. MISSION, VISION, STORY SECTION
+   ========================================= */
+.mission-story-section {
+  padding: 60px 15px;
+  background-color: #fff;
+}
+
+.mission-story-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* LEFT SIDE – Image */
+.mission-image-wrapper {
+  flex: 0 0 45%;
+  max-width: 45%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.mission-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* RIGHT SIDE – Text */
+.mission-content {
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  /* FIX: gap was 3px — too cramped. Increased to 1rem for breathing room */
+  gap: 1rem;
+}
+
+.mission-vision-box h2 {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  margin-bottom: 0.25rem;
+  color: #222;
+}
+
+.mission-vision-box p {
+  /* FIX: Switched from 0.8rem px to rem for consistent scaling */
+  font-size: 0.875rem;
+  color: #555;
+  margin: 0;
+}
+
+.story-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+
+/* --- HORIZONTAL TIMELINE --- */
+.timeline-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1.875rem;
+  padding: 2.5rem 0.9375rem 1.25rem;
+  border-top: 3px solid #644c39;
+  overflow: visible;
+  /* FIX: Changed fixed width: 600px to max-width + width: 100%
+     so it doesn't overflow on small screens */
+  max-width: 600px;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+.timeline-item {
+  position: relative;
+  min-width: 150px;
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: -47px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  background-color: #644c39;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.timeline-year {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.875rem;
+  margin-top: -1.5625rem;
+  color: #222;
+}
+
+.timeline-item p {
+  font-size: 0.875rem;
+  color: #555;
+  margin: 0;
+  max-width: 240px;
+  margin-inline: auto;
+}
+
+/* --- RESPONSIVE: Vertical timeline on small screens --- */
+@media (max-width: 768px) {
+  .timeline-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    border-top: none;
+    border-left: 4px solid #644c39;
+    padding-left: 1.25rem;
+    overflow-x: hidden;
+    gap: 1.5rem;
+  }
+
+  .timeline-item {
+    text-align: left;
+    min-width: 100%;
+  }
+
+  .timeline-item::before {
+    top: 0;
+    left: -1.375rem;
+    transform: none;
+  }
+
+  .timeline-year {
+    margin-top: 0.2rem;
+  }
+}
+
+/* =========================================
+   3. CEO PROFILE SECTION
+   ========================================= */
+.ceo-profile-section {
+  background-color: #fafefc;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.ceo-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 2.5rem;
+  max-width: 1100px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.ceo-avatar-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.ceo-avatar {
+  width: 300px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.ceo-content {
+  flex: 2;
+  color: #333;
+}
+
+.ceo-content h2 {
+  color: #2e7d32;
+  font-size: 1.3rem;
+  margin-bottom: 0.625rem;
+}
+
+.ceo-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.3125rem;
+}
+
+.ceo-title {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 1.25rem;
+  font-size: 0.875rem;
+}
+
+.ceo-bio {
+  line-height: 1.7;
+  margin-bottom: 1.5625rem;
+  font-size: 1rem;
+}
+
+.ceo-message h3 {
+  font-size: 1rem;
+  margin-bottom: 0.625rem;
+  color: #2e7d32;
+}
+
+.ceo-message p {
+  line-height: 1.7;
+  margin-bottom: 0.625rem;
+  font-size: 0.875rem;
+}
+
+.ceo-signature {
+  font-weight: 600;
+  margin-top: 0.625rem;
+  color: #000;
+  font-size: 1rem;
+}
+
+/* =========================================
+   4. OUR IMPACT SECTION
+   ========================================= */
+.our-impact-section {
+  background-color: var(--bg-light);
+  padding: 4rem 1rem 5rem;
+  text-align: center;
+}
+
+.our-impact-section h2 {
+  font-family: var(--font-heading);
+  font-size: var(--h2-size);
+  margin-bottom: 3rem;
+  color: #222;
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.impact-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.impact-icon {
+  width: 60px;
+  height: 60px;
+  background-color: #e5f2e5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.8rem;
+}
+
+.impact-item strong {
+  color: var(--primary-green);
+  font-size: 1.6rem;
+}
+
+/* FIX: Added font-size — was missing on .btn-consultation */
+/* FIX: Added :focus-visible — was missing, only .btn-explore had it */
+.btn-consultation {
+  background-color: var(--primary-green);
+  color: white;
+  border-radius: 8px;
+  padding: 0.9rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-consultation:hover,
+.btn-consultation:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(76, 175, 80, 0.5);
+}
+
+/* =========================================
+   RESPONSIVE BREAKPOINTS
+   ========================================= */
+
+/* --- Tablet (max 1024px) --- */
+@media (max-width: 1024px) {
+  .mission-story-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* FIX: Was max-width: 5% — typo that made image nearly invisible.
+     Corrected to 100% so it fills the column on tablet/mobile */
+  .mission-image-wrapper {
+    max-width: 100%;
+    width: 100%;
+    order: -1;
+  }
+
+  .mission-content {
+    align-items: center;
+    max-width: 100%;
+  }
+
+  /* FIX: Restored border-top for horizontal timeline at this breakpoint.
+     Removed broken mixed comment syntax that was here before. */
+  .timeline-wrapper {
+    border-left: none;
+    border-top: 4px solid #644c39;
+    padding-left: 0;
+    padding-top: 1.25rem;
+  }
+
+  .timeline-item::before {
+    left: 50%;
+    top: -1.25rem;
+    transform: translateX(-50%);
+  }
+}
+
+/* --- Mobile (max 768px) --- */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .impact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* FIX: Added proper CEO stacking for mobile.
+     Was referencing .ceo-card (wrong class name) — corrected to .ceo-container */
+  .ceo-container {
+    flex-direction: column;
+  }
+
+  .ceo-avatar-wrapper {
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .ceo-avatar {
+    width: 100%;
+    height: auto;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .ceo-content {
+    flex: unset;
+    width: 100%;
+  }
+}
+
+/* --- Small mobile (max 480px) --- */
+@media (max-width: 480px) {
+  .impact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mission-story-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .ceo-profile-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .hero-buttons .btn-explore {
+    width: 100%;
+    display: block;
+  }
+}

@@ -1,0 +1,146 @@
+
+:root {
+  --font-heading: "Tienne", serif;
+  --font-body: "Lato", sans-serif;
+  --text-color: #333;
+  --dark-green: #226804;
+  --primary-green: #4caf50;
+}
+
+.services-section {
+    padding: 4rem 2rem;
+    background-color: #fcf8f3; /* Light cream background from image */
+    font-family: var(--font-body, "Lato", sans-serif);
+    color: var(--text-color, #333);
+}
+
+.services-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.services-main-title {
+    font-family: var(--font-heading, "Tienne", serif);
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    text-align: center;
+    color: var(--dark-green, #226804);
+    margin-bottom: 0.5rem;
+}
+
+.services-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    text-align: center;
+    color: #555;
+    margin-bottom: 3rem;
+}
+
+.service-item {
+    display: flex;
+    flex-direction: row; 
+    /* THIS IS THE CORRECTED LINE */
+    align-items: center; /* Vertically centers the image and content */
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 3rem;
+    overflow: hidden; /* Ensures border-radius applies to image */
+}
+
+.service-image-wrapper {
+    flex-shrink: 0; /* Prevents image from shrinking */
+    width: 280px; /* Fixed width for the image container */
+    height: 250px; /* Fixed height for the image container */
+    margin-right: 2rem; /* Space between image and text */
+    /* The border-radius from the parent .service-item will apply */
+    margin-left: 2rem;
+    margin-top: 3rem;
+
+}
+
+.service-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    display: block;
+}
+
+.service-content {
+    padding: 1.5rem 2rem 1.5rem 0; /* Padding inside the content area */
+    flex-grow: 1; /* Allows content to take remaining space */
+}
+
+.service-type-title {
+    font-family: var(--font-heading, "Tienne", serif);
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    color: var(--primary-green, #4caf50);
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.service-description {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: #444;
+}
+
+.service-features {
+    list-style: none; /* Remove default bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+.service-features li {
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+.feature-pro::before {
+    content: "✅"; /* Green checkmark */
+    margin-right: 0.5rem;
+    font-size: 1.1em;
+}
+
+.feature-con::before {
+    content: "❌"; /* Red cross mark */
+    margin-right: 0.5rem;
+    font-size: 1.1em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .service-item {
+        flex-direction: column; /* Stack image and content vertically */
+        /* align-items is already center, which works well here too */
+        text-align: center; /* Center text content */
+    }
+
+    .service-image-wrapper {
+        width: 100%; /* Image takes full width */
+        height: 200px; /* Adjust height for mobile */
+        margin-right: 0; /* Remove right margin */
+        margin-bottom: 1.5rem; /* Add bottom margin for spacing */
+    }
+
+    .service-content {
+        padding: 0 1.5rem 1.5rem 1.5rem; /* Adjust padding for centered text */
+    }
+
+    .service-features {
+        text-align: left; /* Align feature list items to left */
+        max-width: 300px; /* Constrain list width for better readability */
+        margin: 0 auto; /* Center the list itself */
+    }
+}
+
+@media (max-width: 480px) {
+    .services-section {
+        padding: 2.5rem 1rem;
+    }
+    .service-item {
+        margin-bottom: 2rem;
+    }
+    .service-image-wrapper {
+        height: 180px;
+    }
+}
